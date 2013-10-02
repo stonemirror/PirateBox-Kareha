@@ -100,153 +100,306 @@ use constant NORMAL_HEAD_INCLUDE => q{
 
 };
 
-
 # Footer
 use constant NORMAL_FOOT_INCLUDE => include(INCLUDE_DIR."footer.html").q{
 
 		</body>
 	</html>
-	
+
 };
 
+# Main Page
 use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 
-<if ALLOW_TEXT_THREADS or ALLOW_IMAGE_THREADS>
-	<div class="postarea">
-	<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
-
-	<input type="hidden" name="task" value="post" />
-	<if FORCED_ANON><input type="hidden" name="field_a" /></if>
-
-	<table><tbody>
-	<if !FORCED_ANON><tr><td class="postblock"><const S_NAME></td><td><input type="text" name="field_a" size="28" /></td></tr></if>
-	<tr><td class="postblock"><const S_EMAIL></td><td><input type="text" name="field_b" size="28" /></td></tr>
-	<tr><td class="postblock"><const S_SUBJECT></td><td><input type="text" name="title" size="35" />
-	<input type="submit" value="<const S_SUBMIT>" /></td></tr>
-	<tr><td class="postblock"><const S_COMMENT></td><td><textarea name="comment" cols="48" rows="4"></textarea></td></tr>
-
-	<if ALLOW_IMAGE_THREADS>
-		<tr><td class="postblock"><const S_UPLOADFILE></td><td><input type="file" name="file" size="35" />
-		</td></tr>
-	</if>
-
-	<if ENABLE_CAPTCHA>
-		<tr><td class="postblock"><const S_CAPTCHA></td><td><input type="text" name="captcha" size="10" />
-		<img alt="" src="<var expand_filename('captcha.pl')>" />
-		</td></tr>
-	</if>
-
-	<tr><td class="postblock"><const S_DELPASS></td><td><input type="password" name="password" size="8" /> <const S_DELEXPL></td></tr>
-
-	<if SPAM_TRAP>
-		<tr style="display:none">
-		<td class="postblock"><const S_SPAMTRAP></td>
-		<td><input type="text" name="name" size="10" autocomplete="off" /><input type="text" name="link" size="10" autocomplete="off" /></td>
-		</tr>
-	</if>
-
-	<tr><td colspan="2">
-	<div class="rules">}.include(INCLUDE_DIR."rules.html").q{</div></td></tr>
-	</tbody></table></form></div>
-	<script type="text/javascript">set_new_inputs("postform")</script>
-</if>
-
-<hr />
-<form id="delform" action="<var $self>" method="post">
-
-<loop $threads>
-	<loop $posts>
-		<var $text>
-
-		<if $abbreviated><div class="abbrev"><var sprintf(S_ABBRTEXT,"$self/$thread/$num","$self/$thread/")></div></if>
-		<if $omit and $num==1>
-			<span class="omittedposts">
-			<if $omitimages><var sprintf S_ABBRIMG,$omit,$omitimages></if>
-			<if !$omitimages><var sprintf S_ABBR,$omit></if>
-			</span>
+	<div class="container">
+		<if ALLOW_TEXT_THREADS or ALLOW_IMAGE_THREADS>
+			<div class="postarea card">
+				<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="task" value="post" />
+					<if FORCED_ANON>
+						<input type="hidden" name="field_a" />
+					</if>
+					<table>
+						<tr>
+							<td>
+								<table>
+									<tbody>
+										<if !FORCED_ANON>
+											<tr>
+												<td class="postblock">
+													<const S_NAME>
+												</td>
+												<td>
+													<input type="text" name="field_a" size="28" />
+												</td>
+											</tr>
+										</if>
+										<tr>
+											<td class="postblock">
+												<const S_EMAIL>
+											</td>
+											<td>
+												<input type="text" name="field_b" size="28" />
+											</td>
+										</tr>
+										<tr>
+											<td class="postblock">
+												<const S_SUBJECT>
+											</td>
+											<td>
+												<input type="text" name="title" size="35" />
+												<input type="submit" value="<const S_SUBMIT>" />
+											</td>
+										</tr>
+										<tr>
+											<td class="postblock">
+												<const S_COMMENT>
+											</td>
+											<td>
+												<textarea name="comment" cols="48" rows="4"></textarea>
+											</td>
+										</tr>
+										<if ALLOW_IMAGE_THREADS>
+											<tr>
+												<td class="postblock">
+													<const S_UPLOADFILE>
+												</td>
+												<td>
+													<input type="file" name="file" size="35" />
+												</td>
+											</tr>
+										</if>
+										<if ENABLE_CAPTCHA>
+											<tr>
+												<td class="postblock">
+													<const S_CAPTCHA>
+												</td>
+												<td>
+													<input type="text" name="captcha" size="10" />
+													<img alt="" src="<var expand_filename('captcha.pl')>" />
+												</td>
+											</tr>
+										</if>
+										<tr>
+											<td class="postblock">
+												<const S_DELPASS>
+											</td>
+											<td>
+												<input type="password" name="password" size="8" /> <const S_DELEXPL>
+											</td>
+										</tr>
+										<if SPAM_TRAP>
+											<tr style="display:none">
+												<td class="postblock">
+													<const S_SPAMTRAP>
+												</td>
+												<td>
+													<input type="text" name="name" size="10" autocomplete="off" />
+													<input type="text" name="link" size="10" autocomplete="off" />
+												</td>
+											</tr>
+										</if>
+									</tbody>
+								</table>
+							</td>
+							<td>
+								<div class="rules">}.include(INCLUDE_DIR."rules.html").q{</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<script type="text/javascript">set_new_inputs("postform")</script>
 		</if>
-	</loop>
-	<br clear="left" /><hr />
-</loop>
+		<form id="delform" action="<var $self>" method="post">
+			<loop $threads>
+				<div class="post card">
+					<loop $posts>
+						<var $text>
+						<if $abbreviated>
+							<div class="abbrev">
+								<var sprintf(S_ABBRTEXT,"$self/$thread/$num","$self/$thread/")>
+							</div>
+						</if>
+						<if $omit and $num==1>
+							<span class="omittedposts">
+								<if $omitimages>
+									<var sprintf S_ABBRIMG,$omit,$omitimages>
+								</if>
+								<if !$omitimages>
+									<var sprintf S_ABBR,$omit>
+								</if>
+							</span>
+						</if>
+					</loop>
+				</div>
+			</loop>
 
-<table class="userdelete"><tbody><tr><td>
-<input type="hidden" name="task" value="delete" />
-<const S_REPDEL>[<label><input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY></label>]<br />
-<const S_DELKEY><input type="password" name="password" size="8" />
-<input value="<const S_DELETE>" type="submit" /></td></tr></tbody></table>
-</form>
-<script type="text/javascript">set_delpass("delform")</script>
+			<div class="card">
+				<table class="pages" border="1">
+					<tbody>
+						<tr>
+							<td>
+								<if $prevpage>
+									<form method="get" action="<var $prevpage>">
+										<input value="<const S_PREV>" type="submit" />
+									</form>
+								</if>
+								<if !$prevpage>
+									<const S_FIRSTPG>
+								</if>
+							</td>
+							<td>
+								<loop $pages>
+									<if $page ne $current>
+										[<a href="<var $filename>"><var $page></a>]
+									</if>
+									<if $page eq $current>
+										[<var $page>]
+									</if>
+								</loop>
+							</td>
+							<td>
+								<if $nextpage>
+									<form method="get" action="<var $nextpage>">
+										<input value="<const S_NEXT>" type="submit" />
+									</form>
+								</if>
+								<if !$nextpage>
+									<const S_LASTPG>
+								</if>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="userdelete">
+					<tbody>
+						<tr>
+							<td>
+								<input type="hidden" name="task" value="delete" />
+								<const S_REPDEL>[<label><input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY></label>]
+								<const S_DELKEY><input type="password" name="password" size="8" />
+								<input value="<const S_DELETE>" type="submit" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
 
-<table border="1"><tbody><tr><td>
-
-<if $prevpage><form method="get" action="<var $prevpage>"><input value="<const S_PREV>" type="submit" /></form></if>
-<if !$prevpage><const S_FIRSTPG></if>
-
-</td><td>
-
-<loop $pages>
-	<if $page ne $current>[<a href="<var $filename>"><var $page></a>]</if>
-	<if $page eq $current>[<var $page>]</if>
-</loop>
-
-</td><td>
-
-<if $nextpage><form method="get" action="<var $nextpage>"><input value="<const S_NEXT>" type="submit" /></form></if>
-<if !$nextpage><const S_LASTPG></if>
-
-</td></tr></tbody></table><br clear="all" />
+		<script type="text/javascript">set_delpass("delform")</script>
+	</div>
 
 }.NORMAL_FOOT_INCLUDE,KEEP_MAINPAGE_NEWLINES);
 
-
-
+# Reply Page
 use constant THREAD_HEAD_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 
-[<a href="<var expand_filename(HTML_SELF)>"><const S_RETURN></a>]
-<div class="theader"><const S_POSTING></div>
+	[<a href="<var expand_filename(HTML_SELF)>"><const S_RETURN></a>]
+	<div class="theader">
+		<const S_POSTING>
+	</div>
 
-<if ALLOW_TEXT_REPLIES or ALLOW_IMAGE_REPLIES>
-	<div class="postarea">
-	<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
-
-	<input type="hidden" name="task" value="post" />
-	<input type="hidden" name="thread" value="<var $thread>" />
-	<if FORCED_ANON><input type="hidden" name="field_a" /></if>
-
-	<table><tbody>
-	<if !FORCED_ANON><tr><td class="postblock"><const S_NAME></td><td><input type="text" name="field_a" size="28" /></td></tr></if>
-	<tr><td class="postblock"><const S_EMAIL></td><td><input type="text" name="field_b" size="28" /></td></tr>
-	<tr><td class="postblock"><const S_SUBJECT></td><td><input type="text" name="title" size="35" />
-	<input type="submit" value="<const S_SUBMIT>" /></td></tr>
-	<tr><td class="postblock"><const S_COMMENT></td><td><textarea name="comment" cols="48" rows="4"></textarea></td></tr>
-
-	<if ALLOW_IMAGE_REPLIES>
-		<tr><td class="postblock"><const S_UPLOADFILE></td><td><input type="file" name="file" size="35" /></td></tr>
-	</if>
-
-	<if ENABLE_CAPTCHA>
-		<tr><td class="postblock"><const S_CAPTCHA></td><td><input type="text" name="captcha" size="10" />
-		<img alt="" src="<var expand_filename('captcha.pl')>?dummy=<var $size>" />
-		</td></tr>
-	</if>
-
-	<tr><td class="postblock"><const S_DELPASS></td><td><input type="password" name="password" size="8" /> <const S_DELEXPL></td></tr>
-
-	<if SPAM_TRAP>
-		<tr style="display:none">
-		<td class="postblock"><const S_SPAMTRAP></td>
-		<td><input type="text" name="name" size="10" autocomplete="off" /><input type="text" name="link" size="10" autocomplete="off" /></td>
-		</tr>
-	</if>
-
-	<tr><td colspan="2">
-	<div class="rules">}.include(INCLUDE_DIR."rules.html").q{</div></td></tr>
-	</tbody></table></form></div>
-	<script type="text/javascript">set_new_inputs("postform")</script>
-</if>
-
-<hr />
-<form id="delform" action="<var $self>" method="post">
+	<div class="container">
+		<if ALLOW_TEXT_REPLIES or ALLOW_IMAGE_REPLIES>
+			<div class="postarea card">
+				<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="task" value="post" />
+					<input type="hidden" name="thread" value="<var $thread>" />
+					<if FORCED_ANON>
+						<input type="hidden" name="field_a" />
+					</if>
+					<table>
+						<tbody>
+							<if !FORCED_ANON>
+								<tr>
+									<td class="postblock">
+										<const S_NAME>
+									</td>
+									<td>
+										<input type="text" name="field_a" size="28" />
+									</td>
+								</tr>
+							</if>
+							<tr>
+								<td class="postblock">
+									<const S_EMAIL>
+								</td>
+								<td>
+									<input type="text" name="field_b" size="28" />
+								</td>
+							</tr>
+							<tr>
+								<td class="postblock">
+									<const S_SUBJECT>
+								</td>
+								<td>
+									<input type="text" name="title" size="35" />
+									<input type="submit" value="<const S_SUBMIT>" />
+								</td>
+							</tr>
+							<tr>
+								<td class="postblock">
+									<const S_COMMENT>
+								</td>
+								<td>
+									<textarea name="comment" cols="48" rows="4"></textarea>
+								</td>
+							</tr>
+							<if ALLOW_IMAGE_REPLIES>
+								<tr>
+									<td class="postblock">
+										<const S_UPLOADFILE>
+									</td>
+									<td>
+										<input type="file" name="file" size="35" />
+									</td>
+								</tr>
+							</if>
+							<if ENABLE_CAPTCHA>
+								<tr>
+									<td class="postblock">
+										<const S_CAPTCHA>
+									</td>
+									<td>
+										<input type="text" name="captcha" size="10" />
+										<img alt="" src="<var expand_filename('captcha.pl')>?dummy=<var $size>" />
+									</td>
+								</tr>
+							</if>
+							<tr>
+								<td class="postblock">
+									<const S_DELPASS>
+								</td>
+								<td>
+									<input type="password" name="password" size="8" />
+									<const S_DELEXPL>
+								</td>
+							</tr>
+							<if SPAM_TRAP>
+								<tr style="display:none">
+									<td class="postblock">
+										<const S_SPAMTRAP>
+									</td>
+									<td>
+										<input type="text" name="name" size="10" autocomplete="off" />
+										<input type="text" name="link" size="10" autocomplete="off" />
+									</td>
+								</tr>
+							</if>
+							<tr>
+								<td colspan="2">
+									<div class="rules">}.include(INCLUDE_DIR."rules.html").q{</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+			<script type="text/javascript">set_new_inputs("postform")</script>
+		</if>
+	</div>
+	<form id="delform" action="<var $self>" method="post">
 
 });
 
