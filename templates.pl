@@ -2,8 +2,6 @@ use strict;
 
 BEGIN { require 'wakautils.pl' }
 
-
-
 #
 # Interface strings
 #
@@ -43,7 +41,6 @@ use constant S_LASTPG => 'Next';									# Defines next button
 
 use constant S_FRONT => 'Front page';								# Title of the front page in page list
 
-
 #
 # Error strings
 #
@@ -70,68 +67,46 @@ use constant S_DUPENAME => 'A file with the same name already exists.';		# Error
 use constant S_THREADCLOSED => 'This thread is closed.';					# Error message when posting in a legen^H^H^H^H^H closed thread
 use constant S_SPAMTRAP => 'Leave empty (spam trap): ';
 
-
-
 #
 # Templates
 #
 
+# Header
 use constant NORMAL_HEAD_INCLUDE => q{
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-<title><if $title><var $title> - </if><const TITLE></title>
-<meta http-equiv="Content-Type" content="text/html;charset=<const CHARSET>" />
-<link rel="shortcut icon" href="<const expand_filename(FAVICON)>" />
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" />
+		<title><if $title><var $title> - </if>PirateBox Forum</title>
+		<link rel="shortcut icon" href="<const expand_filename(FAVICON)>" />
+		<link rel="stylesheet" type="text/css" href="<const expand_filename(DEFAULT_STYLE)>" />
+		<script type="text/javascript" src="/jquery.min.js"></script>
+		<script type="text/javascript" src="/scripts.js"></script>
+		<script type="text/javascript">var style_cookie="<const STYLE_COOKIE>";</script>
+		<script type="text/javascript" src="<const expand_filename(JS_FILE)>"></script>
+		<script type="text/javascript">require_script_version("3.a");</script>
+	</head>
 
-<style type="text/css">
-body { margin: 0; padding: 12px; margin-bottom: auto; }
-blockquote blockquote { margin-left: 0em }
-form { margin-bottom: 0px }
-.postarea { text-align: center }
-.postarea table { margin: 0px auto; text-align: left }
-.thumb { border: none; float: left; margin: 2px 20px }
-.nothumb { float: left; background: #eee; border: 2px dashed #aaa; text-align: center; margin: 2px 20px; padding: 1em 0.5em 1em 0.5em; }
-.reply blockquote, blockquote :last-child { margin-bottom: 0em }
-.reflink a { color: inherit; text-decoration: none }
-.reply .filesize { margin-left: 20px }
-.userdelete { float: right; text-align: center; white-space: nowrap }
-.replypage .replylink { display: none }
-</style>
+	<if $thread>
+		<body class="replypage">
+	</if>
+	<if !$thread>
+		<body class="mainpage">
+	</if>
 
-<loop $stylesheets>
-<link rel="<if !$default>alternate </if>stylesheet" type="text/css" href="<var expand_filename($filename)>" title="<var $title>" />
-</loop>
+	}.include(INCLUDE_DIR."header.html").q{
 
-<script type="text/javascript">var style_cookie="<const STYLE_COOKIE>";</script>
-<script type="text/javascript" src="<const expand_filename(JS_FILE)>"></script>
-<script type="text/javascript">require_script_version("3.a");</script>
-</head>
-<if $thread><body class="replypage"></if>
-<if !$thread><body class="mainpage"></if>
-
-}.include(INCLUDE_DIR."header.html").q{
-
-<div class="adminbar">
-<loop $stylesheets>
-	[<a href="javascript:set_stylesheet('<var $title>')"><var $title></a>]
-</loop>
--
-[<a href="<var expand_filename("..")>" target="_top"><const S_HOME></a>]
-</div>
-
-<div class="logo">
-<if SHOWTITLEIMG==1><img src="<var expand_filename(TITLEIMG)>" alt="<const TITLE>" /></if>
-<if SHOWTITLEIMG==2><img src="<var expand_filename(TITLEIMG)>" onclick="this.src=this.src;" alt="<const TITLE>" /></if>
-<if SHOWTITLEIMG and SHOWTITLETXT><br /></if>
-<if SHOWTITLETXT><const TITLE></if>
-</div><hr />
 };
 
+
+# Footer
 use constant NORMAL_FOOT_INCLUDE => include(INCLUDE_DIR."footer.html").q{
 
-</body></html>
+		</body>
+	</html>
+	
 };
 
 use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
