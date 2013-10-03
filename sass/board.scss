@@ -8,6 +8,17 @@
 @import 'fonts';
 @import 'style';
 
+//----------------[ Mobile ]
+#post-form {
+	input[type=text],
+	textarea {
+		width: 100%;
+	}
+}
+
+#post-rules {
+}
+
 .post {
 	.post-head {
 		input[type=checkbox] {
@@ -55,4 +66,17 @@
 		margin: 0;
 		vertical-align: middle;
 	}
+}
+
+//----------------[ Desktop ]
+@media screen and (min-width: 801px) {
+#post-form {
+	float: left;
+	width: 50%;
+}
+
+#post-rules {
+	float: right;
+	width: 50%;
+}
 }

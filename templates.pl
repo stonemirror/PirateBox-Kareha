@@ -113,104 +113,98 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 
 	<div class="container">
 		<if ALLOW_TEXT_THREADS or ALLOW_IMAGE_THREADS>
-			<div class="postarea card">
+			<div id="post-area" class="card">
 				<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="task" value="post" />
 					<if FORCED_ANON>
 						<input type="hidden" name="field_a" />
 					</if>
-					<table>
-						<tr>
-							<td>
-								<table>
-									<tbody>
-										<if !FORCED_ANON>
-											<tr>
-												<td class="postblock">
-													<const S_NAME>
-												</td>
-												<td>
-													<input type="text" name="field_a" size="28" />
-												</td>
-											</tr>
-										</if>
-										<tr>
-											<td class="postblock">
-												<const S_EMAIL>
-											</td>
-											<td>
-												<input type="text" name="field_b" size="28" />
-											</td>
-										</tr>
-										<tr>
-											<td class="postblock">
-												<const S_SUBJECT>
-											</td>
-											<td>
-												<input type="text" name="title" size="35" />
-											</td>
-										</tr>
-										<tr>
-											<td class="postblock">
-												<const S_COMMENT>
-											</td>
-											<td>
-												<textarea name="comment" cols="48" rows="4"></textarea>
-											</td>
-										</tr>
-										<if ALLOW_IMAGE_THREADS>
-											<tr>
-												<td class="postblock">
-													<const S_UPLOADFILE>
-												</td>
-												<td>
-													<input type="file" name="file" size="35" />
-												</td>
-											</tr>
-										</if>
-										<if ENABLE_CAPTCHA>
-											<tr>
-												<td class="postblock">
-													<const S_CAPTCHA>
-												</td>
-												<td>
-													<input type="text" name="captcha" size="10" />
-													<img alt="" src="<var expand_filename('captcha.pl')>" />
-												</td>
-											</tr>
-										</if>
-										<tr>
-											<td class="postblock">
-												<const S_DELPASS>
-											</td>
-											<td>
-												<input type="password" name="password" size="8" /> <const S_DELEXPL>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<input type="submit" class="button" value="<const S_SUBMIT>" />
-											</td>
-										</tr>
-										<if SPAM_TRAP>
-											<tr style="display:none">
-												<td class="postblock">
-													<const S_SPAMTRAP>
-												</td>
-												<td>
-													<input type="text" name="name" size="10" autocomplete="off" />
-													<input type="text" name="link" size="10" autocomplete="off" />
-												</td>
-											</tr>
-										</if>
-									</tbody>
-								</table>
-							</td>
-							<td>
-								<div class="rules">}.include(INCLUDE_DIR."rules.html").q{</div>
-							</td>
-						</tr>
-					</table>
+					<div id="post-form">
+						<table>
+							<tbody>
+								<if !FORCED_ANON>
+									<tr>
+										<td class="postblock">
+											<const S_NAME>
+										</td>
+										<td>
+											<input type="text" name="field_a" size="28" />
+										</td>
+									</tr>
+								</if>
+								<tr>
+									<td class="postblock">
+										<const S_EMAIL>
+									</td>
+									<td>
+										<input type="text" name="field_b" size="28" />
+									</td>
+								</tr>
+								<tr>
+									<td class="postblock">
+										<const S_SUBJECT>
+									</td>
+									<td>
+										<input type="text" name="title" size="35" />
+									</td>
+								</tr>
+								<tr>
+									<td class="postblock">
+										<const S_COMMENT>
+									</td>
+									<td>
+										<textarea name="comment" cols="48" rows="4"></textarea>
+									</td>
+								</tr>
+								<if ALLOW_IMAGE_THREADS>
+									<tr>
+										<td class="postblock">
+											<const S_UPLOADFILE>
+										</td>
+										<td>
+											<input type="file" name="file" size="35" />
+										</td>
+									</tr>
+								</if>
+								<if ENABLE_CAPTCHA>
+									<tr>
+										<td class="postblock">
+											<const S_CAPTCHA>
+										</td>
+										<td>
+											<input type="text" name="captcha" size="10" />
+											<img alt="" src="<var expand_filename('captcha.pl')>" />
+										</td>
+									</tr>
+								</if>
+								<tr>
+									<td class="postblock">
+										<const S_DELPASS>
+									</td>
+									<td>
+										<input type="password" name="password" size="8" /> <const S_DELEXPL>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="submit" class="button" value="<const S_SUBMIT>" />
+									</td>
+								</tr>
+								<if SPAM_TRAP>
+									<tr style="display:none">
+										<td class="postblock">
+											<const S_SPAMTRAP>
+										</td>
+										<td>
+											<input type="text" name="name" size="10" autocomplete="off" />
+											<input type="text" name="link" size="10" autocomplete="off" />
+										</td>
+									</tr>
+								</if>
+							</tbody>
+						</table>
+					</div>
+					<div id="post-rules">}.include(INCLUDE_DIR."rules.html").q{</div>
 				</form>
 			</div>
 			<script type="text/javascript">set_new_inputs("postform")</script>
