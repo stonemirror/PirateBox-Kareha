@@ -44,29 +44,15 @@
 	}
 }
 
-.post .filetitle { font-weight: bold; }
-.post label .postername { color: #979ea1; font-weight: bold; }
-.post { 
-    margin: 0 0 1em;
-  }
-    .post-head {
-      margin: 0 0 1em;
-    }
-      .post-title, .post-user {
-        font-weight: bold;
-      }
-  .reply {
-    background: gray;
-    margin: 0 0 1em 1em;
-    padding: 1em;
-  }
-  .reply:last-child {
-    margin-bottom: 0;
-  }
-  .post-content {
-    padding: 0 0 0 1em;
-  }
-    .post-content img {
-      float: left;
-      margin: 0 1em 0 0;
-    }
+.pages {
+	float: left;
+}
+
+.userdelete {
+	float: right;
+	line-height: 100%;
+	input {
+		margin: 0;
+		vertical-align: middle;
+	}
+}

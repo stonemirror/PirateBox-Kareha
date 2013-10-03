@@ -148,7 +148,7 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 											</td>
 											<td>
 												<input type="text" name="title" size="35" />
-												<input type="submit" value="<const S_SUBMIT>" />
+												<input type="submit" class="button" value="<const S_SUBMIT>" />
 											</td>
 										</tr>
 										<tr>
@@ -272,18 +272,12 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 						</tr>
 					</tbody>
 				</table>
-				<table class="userdelete">
-					<tbody>
-						<tr>
-							<td>
-								<input type="hidden" name="task" value="delete" />
-								<const S_REPDEL>[<label><input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY></label>]
-								<const S_DELKEY><input type="password" name="password" size="8" />
-								<input value="<const S_DELETE>" type="submit" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="userdelete">
+					<input type="hidden" name="task" value="delete" />
+					<const S_REPDEL>[<input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY>]
+					<const S_DELKEY><input type="password" name="password" size="8" />
+					<input value="<const S_DELETE>" class="button" type="submit" />
+				</div>
 			</div>
 		</form>
 
@@ -335,7 +329,7 @@ use constant THREAD_HEAD_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 								</td>
 								<td>
 									<input type="text" name="title" size="35" />
-									<input type="submit" value="<const S_SUBMIT>" />
+									<input type="submit" class="button" value="<const S_SUBMIT>" />
 								</td>
 							</tr>
 							<tr>
@@ -398,8 +392,9 @@ use constant THREAD_HEAD_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 			</div>
 			<script type="text/javascript">set_new_inputs("postform")</script>
 		</if>
+
+		<form id="delform" action="<var $self>" method="post">
 	</div>
-	<form id="delform" action="<var $self>" method="post">
 
 });
 
@@ -418,8 +413,9 @@ use constant THREAD_FOOT_TEMPLATE => compile_template(q{
 
 }.NORMAL_FOOT_INCLUDE);
 
-# Post and Replies
+# Posts and Replies
 use constant REPLY_TEMPLATE => compile_template( q{
+
 	<if $num==1>
 		<if $image>
 			<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
@@ -438,9 +434,9 @@ use constant REPLY_TEMPLATE => compile_template( q{
 		<a name="<var $num>"></a>
 		<div class="post-head">
 			<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-			<span class="filetitle"><var $title></span>
+			<span class="post-title"><var $title></span>
 			<if $link>
-				<span class="postername"><a href="<var $link>"><var $name></a></span>
+				<span class="post-user"><a href="<var $link>"><var $name></a></span>
 				<if $trip>
 					<span class="postertrip">
 						<a href="<var $link>">
@@ -455,7 +451,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 				</if>
 			</if>
 			<if !$link>
-				<span class="postername"><var $name></span>
+				<span class="post-user"><var $name></span>
 				<if $trip>
 					<span class="postertrip">
 						<if !$capped>
@@ -482,9 +478,9 @@ use constant REPLY_TEMPLATE => compile_template( q{
 		<div class="reply" id="reply<var $num>">
 			<div class="post-head">
 				<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-				<span class="replytitle"><var $title></span>
+				<span class="post-title"><var $title></span>
 				<if $link>
-					<span class="commentpostername"><a href="<var $link>"><var $name></a></span>
+					<span class="post-user"><a href="<var $link>"><var $name></a></span>
 					<if $trip>
 						<span class="postertrip">
 							<a href="<var $link>">
@@ -499,7 +495,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 					</if>
 				</if>
 				<if !$link>
-					<span class="commentpostername"><var $name></span>
+					<span class="post-user"><var $name></span>
 					<if $trip>
 						<span class="postertrip">
 							<if !$capped>
@@ -535,6 +531,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 			</div>
 		</div>
 	</if>
+
 });
 
 use constant DELETED_TEMPLATE => compile_template( q{
