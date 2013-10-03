@@ -438,54 +438,104 @@ use constant REPLY_TEMPLATE => compile_template( q{
 	</if>
 
 	<a name="<var $num>"></a>
-	<label><input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-	<span class="filetitle"><var $title></span>
-	<if $link><span class="postername"><a href="<var $link>"><var $name></a></span><if $trip><span class="postertrip"><a href="<var $link>"><if !$capped><var $trip></if><if $capped><var $capped></if></a></span></if></if>
-	<if !$link><span class="postername"><var $name></span><if $trip><span class="postertrip"><if !$capped><var $trip></if><if $capped><var $capped></if></span></if></if>
-	<var $date></label>
-	<span class="reflink">
-	<a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a>
-	</span>&nbsp;
-	<span class="replylink">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
-
-	<blockquote>
-	<var $comment>
-	</blockquote>
+	<div class="post-head">
+		<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
+		<span class="filetitle"><var $title></span>
+		<if $link>
+			<span class="postername"><a href="<var $link>"><var $name></a></span>
+			<if $trip>
+				<span class="postertrip">
+					<a href="<var $link>">
+						<if !$capped>
+							<var $trip>
+						</if>
+						<if $capped>
+							<var $capped>
+						</if>
+					</a>
+				</span>
+			</if>
+		</if>
+		<if !$link>
+			<span class="postername"><var $name></span>
+			<if $trip>
+				<span class="postertrip">
+					<if !$capped>
+						<var $trip>
+					</if>
+					<if $capped>
+						<var $capped>
+					</if>
+				</span>
+			</if>
+		</if>
+		<span class="post-data"><var $date></var></span>
+		<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
+		<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
+	</div>
+	<div class="post-content">
+		<blockquote>
+			<var $comment>
+		</blockquote>
+	</div>
 </if>
 <if $num!=1>
-	<table><tbody><tr><td class="doubledash">&gt;&gt;</td>
-	<td class="reply" id="reply<var $num>">
-
 	<a name="<var $num>"></a>
-	<label><input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-	<span class="replytitle"><var $title></span>
-	<if $link><span class="commentpostername"><a href="<var $link>"><var $name></a></span><if $trip><span class="postertrip"><a href="<var $link>"><if !$capped><var $trip></if><if $capped><var $capped></if></a></span></if></if>
-	<if !$link><span class="commentpostername"><var $name></span><if $trip><span class="postertrip"><if !$capped><var $trip></if><if $capped><var $capped></if></span></if></if>
-	<var $date></label>
-	<span class="reflink">
-	<a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a>
-	</span>&nbsp;
+	<div class="reply" id="reply<var $num>">
+		<div class="post-head">
+			<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
+			<span class="replytitle"><var $title></span>
+			<if $link>
+				<span class="commentpostername"><a href="<var $link>"><var $name></a></span>
+				<if $trip>
+					<span class="postertrip">
+						<a href="<var $link>">
+							<if !$capped>
+								<var $trip>
+							</if>
+							<if $capped>
+								<var $capped>
+							</if>
+						</a>
+					</span>
+				</if>
+			</if>
+			<if !$link>
+				<span class="commentpostername"><var $name></span>
+				<if $trip>
+					<span class="postertrip">
+						<if !$capped>
+							<var $trip>
+						</if>
+						<if $capped>
+							<var $capped>
+						</if>
+					</span>
+				</if>
+			</if>
+			<span class="post-data"><var $date></var></span>
+			<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span> 
+		</div>
+		<if $image>
+			<br />
+			<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
+			-(<em><var $size> B, <var $width>x<var $height></em>)</span>
+			<span class="thumbnailmsg"><const S_THUMB></span><br />
 
-	<if $image>
-		<br />
-		<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-		-(<em><var $size> B, <var $width>x<var $height></em>)</span>
-		<span class="thumbnailmsg"><const S_THUMB></span><br />
-
-		<if $thumbnail>
-			<a target="_blank" href="<var expand_filename(clean_path($image))>">
-			<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+			<if $thumbnail>
+				<a target="_blank" href="<var expand_filename(clean_path($image))>">
+				<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+			</if>
+			<if !$thumbnail>
+				<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
+			</if>
 		</if>
-		<if !$thumbnail>
-			<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
-		</if>
-	</if>
-
-	<blockquote>
-	<var $comment>
-	</blockquote>
-
-	</td></tr></tbody></table>
+		<div class="post-content">
+			<blockquote>
+				<var $comment>
+			</blockquote>
+		</div>
+	</div>
 </if>
 });
 
