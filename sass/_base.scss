@@ -1,0 +1,82 @@
+//
+//	Base
+//
+
+//---------------[ Variables ]
+$black: 		rgb(27,29,30);
+$white: 		rgb(255,255,255);
+$red:           rgb(173,0,11);
+$gray: 			lighten($black, 80%);
+$dark-gray:     lighten($black, 50%);
+
+$chat-red:		rgb(255,0,0);
+$chat-green:	rgb(0,128,0);
+$chat-blue: 	rgb(0,0,255);
+$chat-orange: 	rgb(255,128,64);
+
+$border:		1px solid $dark-gray;
+$radius:		3px;
+
+//---------------[ Mixins ]
+// Margin and Padding
+@mixin marpad($margin, $padding) {
+	margin: $margin;
+	padding: $padding;
+}
+
+// All Things Font
+@mixin font($size, $weight, $line, $margin) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $line;
+	margin: $margin;
+}
+
+// Transparency
+@mixin transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: transparent;
+  background-color: $rgba;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+  zoom: 1;
+}
+
+// Transitions
+@mixin transitions($what, $time, $tween) {
+	-webkit-transition: $what $time $tween;
+	-moz-transition: $what $time $tween;
+	-o-transition: $what $time $tween;
+	transition: $what $time $tween;
+}
+
+//----------------[ Reset ]
+* {
+	overflow: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,body,div,object,iframe,fieldset {
+	border: 0;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+header,footer,nav,section,article,hgroup,figure {
+	display: block;
+}
+
+legend {
+	display: none;
+}

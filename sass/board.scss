@@ -1,0 +1,72 @@
+//----------------[ Includes ]
+//--------[ Compass ]
+@import 'compass';
+@import 'compass/css3';
+
+//--------[ Custom ]
+@import 'base';
+@import 'fonts';
+@import 'style';
+
+.post {
+	.post-head {
+		input[type=checkbox] {
+			height: auto;
+		}
+
+		.post-title, .post-user {
+			font-weight: bold;
+		}
+
+		.post-user {
+			color: $dark-gray;
+		}
+
+		.post-data {}
+
+		.post-number {}
+
+		.post-reply {}	
+	}
+
+	.post-content {
+		padding: 0 0 0 1em;
+	}
+
+	.reply {
+		background: $gray;
+	    margin: 0 0 1em 1em;
+	    padding: 1em;
+	}
+
+	.reply:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.post .filetitle { font-weight: bold; }
+.post label .postername { color: #979ea1; font-weight: bold; }
+.post { 
+    margin: 0 0 1em;
+  }
+    .post-head {
+      margin: 0 0 1em;
+    }
+      .post-title, .post-user {
+        font-weight: bold;
+      }
+  .reply {
+    background: gray;
+    margin: 0 0 1em 1em;
+    padding: 1em;
+  }
+  .reply:last-child {
+    margin-bottom: 0;
+  }
+  .post-content {
+    padding: 0 0 0 1em;
+  }
+    .post-content img {
+      float: left;
+      margin: 0 1em 0 0;
+    }

@@ -1,0 +1,292 @@
+//----------------[ Mobile ]
+html {}
+
+	body {
+		background: $gray;
+	}
+
+		header {
+			background: $black;
+			img {
+				vertical-align: bottom;
+			}
+		}
+			#logo {
+				float: left;
+				overflow: hidden;
+			}
+			
+			#menu-icon {
+				float: right;
+				width: 36px;
+				@include transitions(all, 0.50s, ease-in-out);
+			}
+
+				.rotate {
+					@include rotate(-90deg);
+					@include transitions(all, 0.50s, ease-in-out);
+				}
+			
+			#top-nav {
+				clear: both;
+				display: none;
+				padding: 1em 0 0 0;
+				ul {
+					li {
+						a {}
+					}
+				}
+			}
+
+		#content {}
+			
+			#welcome {}
+				
+				#thanks {
+					float: right;
+					margin: 0;
+				}
+
+			#sidebar {}
+
+				#upload {
+					iframe {
+						border: $border;
+						border-radius: $radius;
+						margin: 0 0 1em;
+					}
+				}
+
+			#main {}
+
+				#chat {}
+
+					#shoutbox {
+						height: 350px;
+					   	overflow: auto;
+					   	width: 100%;
+					   	border: $border;
+					   	border-radius: $radius;
+					   	@include marpad(0 0 1em, .5em);
+						.message {
+							margin: 0 0 .25em 0;
+						}
+					}
+
+					#sb_form {}
+
+						#shoutbox-input {
+							margin: 0 0 1em 0;
+							.nickname,
+							.message,
+							.button {
+								width: 100%;
+							}
+						}
+
+						#shoutbox-options {
+							label {
+								float: left;
+								overflow: hidden;
+								border-radius: $radius;
+								@include marpad(0 .5em .5em 0, .5em 1em);
+								input {
+									margin: 0 .5em 0 0;
+								}
+							}
+							
+							.bg-black {
+								background: $black;
+							}
+							
+							.bg-blue {
+								background: $chat-blue;
+							}
+							
+							.bg-green {
+								background: $chat-green;
+							}
+							
+							.bg-orange {
+								background: $chat-orange;
+							}
+
+							.bg-red {
+								background: $chat-red;
+							}
+						}
+
+		footer {
+			@extend header;
+		}
+
+			.to-top {}
+
+		input {
+			height: 3em;
+			border: $border;
+			border-radius: $radius;
+			@include marpad(0 0 1em, 0 .5em);
+		}
+
+		input[type=radio] {
+		  	height: 1.3em;
+		  	margin: 0 .5em 0 0;
+		}
+
+		.button {
+			background: $dark-gray;
+			border: 0;
+			color: $white;
+		}
+
+			.button:active {
+				background: darken($dark-gray, 10%);
+				color: darken($white, 20%);
+				@include box-shadow(darken($dark-gray, 30%) 0px -3px 0px inset);
+			}
+
+		.card {
+			background: $white;
+			border-radius: $radius;
+			@include box-shadow($dark-gray 0px 3px 0px);
+			@include marpad(0 0 1em, 1em);
+		}
+
+		.container {
+			height: 100%;
+			padding: 1em;
+			width: 100%;
+		}
+
+		.list {
+			table {
+				width: 100%;
+				thead {
+					text-align: left;
+				}
+				tbody {
+					tr {
+						height: 2em;
+						vertical-align: middle;
+					}
+					tr:hover {
+						background: $gray;
+					}
+				}
+				.m, .s, .t {
+					display: none;
+				}
+			}
+		}
+
+//----------------[ Desktop ]
+@media screen and (min-width: 801px) {
+html {}
+
+	body {}
+
+		header {}
+			#logo {
+				margin: 0 2em 0 0;
+			}
+
+			#menu-icon {
+				display: none;
+			}
+			
+			#top-nav {
+				clear: none;
+				display: table-cell;
+				padding: 0;
+				vertical-align: middle;
+				ul {
+					li {
+						float: left;
+						a {
+							@include marpad(0 1em 0 0, 0);
+						}
+					}
+				}
+			}
+
+		#content {}
+			
+			#welcome {}
+				
+				#thanks {}
+
+			#sidebar {
+				float: right;
+				width: 40%;
+			}
+
+				#upload {
+					iframe {}
+				}
+
+			#main {
+				float: left;
+				padding: 0 1em 0 0;
+				width: 60%;
+			}
+
+				#chat {}
+
+					#shoutbox {
+						.message {}
+					}
+
+					#sb_form {}
+
+						#shoutbox-input {
+							.nickname {
+								float: left;
+								margin: 0 1em 0 0;
+								width: 20%;
+							}
+
+							.message {
+								float: left;
+								margin: 0 1em 0 0;
+								width: 60%;
+							}
+							
+							.button {
+								float: right;
+								margin: 0;
+								width: 15%;
+							}
+						}
+
+						#shoutbox_options {
+							label {}
+							.bg-black {}
+							.bg-blue {}
+							.bg-green {}
+							.bg-orange {}
+							.bg-red {}
+						}
+
+		footer {}
+
+			.to-top {
+				display: none;
+			}
+
+		.container {
+			margin: 0 auto;
+			max-width: 1280px;
+			width: 90%;
+		}
+
+		.list {
+			table {
+				.m, 
+				.s, 
+				.t {
+					display: table-cell;
+				}
+			}
+		}
+}

@@ -403,90 +403,44 @@ use constant THREAD_HEAD_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 
 });
 
-
-
+# Delete Posts
 use constant THREAD_FOOT_TEMPLATE => compile_template(q{
 
-<br clear="left" /><hr />
+	<br clear="left" /><hr />
 
-<table class="userdelete"><tbody><tr><td>
-<input type="hidden" name="task" value="delete" />
-<const S_REPDEL>[<label><input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY></label>]<br />
-<const S_DELKEY><input type="password" name="password" size="8" />
-<input value="<const S_DELETE>" type="submit" /></td></tr></tbody></table>
-</form>
-<script type="text/javascript">set_delpass("delform")</script>
+	<table class="userdelete"><tbody><tr><td>
+	<input type="hidden" name="task" value="delete" />
+	<const S_REPDEL>[<label><input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY></label>]<br />
+	<const S_DELKEY><input type="password" name="password" size="8" />
+	<input value="<const S_DELETE>" type="submit" /></td></tr></tbody></table>
+	</form>
+	<script type="text/javascript">set_delpass("delform")</script>
 
 }.NORMAL_FOOT_INCLUDE);
 
-
-
+# Post and Replies
 use constant REPLY_TEMPLATE => compile_template( q{
-<if $num==1>
-	<if $image>
-		<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-		-(<em><var $size> B, <var $width>x<var $height></em>)</span>
-		<span class="thumbnailmsg"><const S_THUMB></span><br />
+	<if $num==1>
+		<if $image>
+			<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
+			-(<em><var $size> B, <var $width>x<var $height></em>)</span>
+			<span class="thumbnailmsg"><const S_THUMB></span><br />
 
-		<if $thumbnail>
-			<a target="_blank" href="<var expand_filename(clean_path($image))>">
-			<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
-		</if>
-		<if !$thumbnail>
-			<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
-		</if>
-	</if>
-
-	<a name="<var $num>"></a>
-	<div class="post-head">
-		<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-		<span class="filetitle"><var $title></span>
-		<if $link>
-			<span class="postername"><a href="<var $link>"><var $name></a></span>
-			<if $trip>
-				<span class="postertrip">
-					<a href="<var $link>">
-						<if !$capped>
-							<var $trip>
-						</if>
-						<if $capped>
-							<var $capped>
-						</if>
-					</a>
-				</span>
+			<if $thumbnail>
+				<a target="_blank" href="<var expand_filename(clean_path($image))>">
+				<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+			</if>
+			<if !$thumbnail>
+				<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
 			</if>
 		</if>
-		<if !$link>
-			<span class="postername"><var $name></span>
-			<if $trip>
-				<span class="postertrip">
-					<if !$capped>
-						<var $trip>
-					</if>
-					<if $capped>
-						<var $capped>
-					</if>
-				</span>
-			</if>
-		</if>
-		<span class="post-data"><var $date></var></span>
-		<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
-		<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
-	</div>
-	<div class="post-content">
-		<blockquote>
-			<var $comment>
-		</blockquote>
-	</div>
-</if>
-<if $num!=1>
-	<a name="<var $num>"></a>
-	<div class="reply" id="reply<var $num>">
+
+		<a name="<var $num>"></a>
 		<div class="post-head">
 			<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-			<span class="replytitle"><var $title></span>
+			<span class="filetitle"><var $title></span>
 			<if $link>
-				<span class="commentpostername"><a href="<var $link>"><var $name></a></span>
+				<span class="postername"><a href="<var $link>"><var $name></a></span>
 				<if $trip>
 					<span class="postertrip">
 						<a href="<var $link>">
@@ -501,7 +455,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 				</if>
 			</if>
 			<if !$link>
-				<span class="commentpostername"><var $name></span>
+				<span class="postername"><var $name></span>
 				<if $trip>
 					<span class="postertrip">
 						<if !$capped>
@@ -514,58 +468,92 @@ use constant REPLY_TEMPLATE => compile_template( q{
 				</if>
 			</if>
 			<span class="post-data"><var $date></var></span>
-			<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span> 
+			<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
+			<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
 		</div>
-		<if $image>
-			<br />
-			<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-			-(<em><var $size> B, <var $width>x<var $height></em>)</span>
-			<span class="thumbnailmsg"><const S_THUMB></span><br />
-
-			<if $thumbnail>
-				<a target="_blank" href="<var expand_filename(clean_path($image))>">
-				<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
-			</if>
-			<if !$thumbnail>
-				<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
-			</if>
-		</if>
 		<div class="post-content">
 			<blockquote>
 				<var $comment>
 			</blockquote>
 		</div>
-	</div>
-</if>
+	</if>
+	<if $num!=1>
+		<a name="<var $num>"></a>
+		<div class="reply" id="reply<var $num>">
+			<div class="post-head">
+				<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
+				<span class="replytitle"><var $title></span>
+				<if $link>
+					<span class="commentpostername"><a href="<var $link>"><var $name></a></span>
+					<if $trip>
+						<span class="postertrip">
+							<a href="<var $link>">
+								<if !$capped>
+									<var $trip>
+								</if>
+								<if $capped>
+									<var $capped>
+								</if>
+							</a>
+						</span>
+					</if>
+				</if>
+				<if !$link>
+					<span class="commentpostername"><var $name></span>
+					<if $trip>
+						<span class="postertrip">
+							<if !$capped>
+								<var $trip>
+							</if>
+							<if $capped>
+								<var $capped>
+							</if>
+						</span>
+					</if>
+				</if>
+				<span class="post-data"><var $date></var></span>
+				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span> 
+			</div>
+			<if $image>
+				<br />
+				<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
+				-(<em><var $size> B, <var $width>x<var $height></em>)</span>
+				<span class="thumbnailmsg"><const S_THUMB></span><br />
+
+				<if $thumbnail>
+					<a target="_blank" href="<var expand_filename(clean_path($image))>">
+					<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+				</if>
+				<if !$thumbnail>
+					<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
+				</if>
+			</if>
+			<div class="post-content">
+				<blockquote>
+					<var $comment>
+				</blockquote>
+			</div>
+		</div>
+	</if>
 });
-
-
-
 
 use constant DELETED_TEMPLATE => compile_template( q{
 });
 
-
-
 use constant BACKLOG_PAGE_TEMPLATE => compile_template( NORMAL_HEAD_INCLUDE.q{
 }.NORMAL_FOOT_INCLUDE);
-
-
 
 use constant RSS_TEMPLATE => compile_template( q{
 });
 
-
-
 use constant ERROR_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 
-<h1 style="text-align: center"><var $error><br /><br />
-<a href="<var escamp($ENV{HTTP_REFERER})>"><const S_RETURN></a><br /><br />
-</h1>
+	<h1 style="text-align: center">
+		<var $error><br /><br />
+		<a href="<var escamp($ENV{HTTP_REFERER})>"><const S_RETURN></a><br /><br />
+	</h1>
 
 }.NORMAL_FOOT_INCLUDE);
-
-
 
 sub get_filename($) { my $path=shift; $path=~m!([^/]+)$!; clean_string($1) }
 
