@@ -148,7 +148,6 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 											</td>
 											<td>
 												<input type="text" name="title" size="35" />
-												<input type="submit" class="button" value="<const S_SUBMIT>" />
 											</td>
 										</tr>
 										<tr>
@@ -186,6 +185,11 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 											</td>
 											<td>
 												<input type="password" name="password" size="8" /> <const S_DELEXPL>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<input type="submit" class="button" value="<const S_SUBMIT>" />
 											</td>
 										</tr>
 										<if SPAM_TRAP>
@@ -434,7 +438,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 		<a name="<var $num>"></a>
 		<div class="post-head">
 			<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-			<span class="post-title"><var $title></span>
+			<span class="post-subject"><var $title></span>
 			<if $link>
 				<span class="post-user"><a href="<var $link>"><var $name></a></span>
 				<if $trip>
@@ -478,7 +482,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 		<div class="reply" id="reply<var $num>">
 			<div class="post-head">
 				<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-				<span class="post-title"><var $title></span>
+				<span class="post-subject"><var $title></span>
 				<if $link>
 					<span class="post-user"><a href="<var $link>"><var $name></a></span>
 					<if $trip>
