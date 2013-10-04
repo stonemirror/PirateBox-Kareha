@@ -109,7 +109,9 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
   .to-top { display: none; }
   .container { margin: 0 auto; max-width: 1280px; width: 90%; }
   .list table .m, .list table .s, .list table .t { display: table-cell; } }
-#post-form input[type=text], #post-form input[type=file], #post-form textarea { margin-bottom: 1em; width: 100%; }
+#post-form table td { padding: 0 0 1em; vertical-align: middle; }
+#post-form table .postblock { padding: 0 1em 0 0; vertical-align: top; }
+#post-form input[type=text], #post-form input[type=file], #post-form textarea { margin: 0; width: 100%; }
 #post-form #post-submit { float: right; }
 
 .post .post-head input[type=checkbox] { height: auto; }

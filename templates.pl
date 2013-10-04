@@ -183,7 +183,7 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 											<const S_DELPASS>
 										</td>
 										<td>
-											<input type="password" name="password" size="8" /> <small><const S_DELEXPL></small>
+											<input type="password" name="password" size="8" /> <span class="pass-text"><const S_DELEXPL></span>
 										</td>
 									</tr>
 									<tr>
