@@ -37,10 +37,12 @@
 }
 
 #post-rules {
+	display: none;
 }
 
 .post {
 	.post-head {
+		font-size: .75em;
 		input[type=checkbox] {
 			height: auto;
 		}
@@ -66,7 +68,7 @@
 
 	.reply {
 		background: $gray;
-	    margin: 0 0 1em 1em;
+	    margin: 0 0 1em 0;
 	    padding: 1em;
 	}
 
@@ -90,6 +92,12 @@
 
 //----------------[ Desktop ]
 @media screen and (min-width: 801px) {
+.post {
+	.post-head {
+		font-size: 1em;
+	}
+}
+
 #post-form {
 	float: left;
 	padding: 0 1em 0 0;
