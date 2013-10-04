@@ -10,23 +10,28 @@
 
 //----------------[ Mobile ]
 #post-form {
-	table {
-		td {
-			padding: 0 0 1em;
-			vertical-align: middle;
-		}
-		.postblock {
-			padding: 0 1em 0 0;
-			vertical-align: top;
-		}
+	label {
+		display: none;
 	}
-	input[type=text],
-	input[type=file],
-	textarea {
-		margin: 0;
+
+	input, textarea {
+		display: block;
+		margin: 0 0 1em;
 		width: 100%;
 	}
-	#post-submit {
+	
+	textarea {
+		border: $border;
+		border-radius: $radius;
+		font-size: .75em;
+		padding: .5em;
+	}
+	
+	#post-form-link {
+		display: none;
+	}
+
+	#post-form-submit {
 		float: right;
 	}
 }

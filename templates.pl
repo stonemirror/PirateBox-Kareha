@@ -121,89 +121,28 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 					</if>
 					<div id="post-form">
 						<div class="card">
-							<table>
-								<tbody>
-									<if !FORCED_ANON>
-										<tr>
-											<td class="postblock">
-												<const S_NAME>
-											</td>
-											<td>
-												<input type="text" name="field_a" size="28" placeholder="Anonymous" />
-											</td>
-										</tr>
-									</if>
-									<tr>
-										<td class="postblock">
-											<const S_EMAIL>
-										</td>
-										<td>
-											<input type="text" name="field_b" size="28" />
-										</td>
-									</tr>
-									<tr>
-										<td class="postblock">
-											<const S_SUBJECT>
-										</td>
-										<td>
-											<input type="text" name="title" size="35" />
-										</td>
-									</tr>
-									<tr>
-										<td class="postblock">
-											<const S_COMMENT>
-										</td>
-										<td>
-											<textarea name="comment" cols="48" rows="4"></textarea>
-										</td>
-									</tr>
-									<if ALLOW_IMAGE_THREADS>
-										<tr>
-											<td class="postblock">
-												<const S_UPLOADFILE>
-											</td>
-											<td>
-												<input type="file" name="file" size="35" />
-											</td>
-										</tr>
-									</if>
-									<if ENABLE_CAPTCHA>
-										<tr>
-											<td class="postblock">
-												<const S_CAPTCHA>
-											</td>
-											<td>
-												<input type="text" name="captcha" size="10" />
-												<img alt="" src="<var expand_filename('captcha.pl')>" />
-											</td>
-										</tr>
-									</if>
-									<tr>
-										<td class="postblock">
-											<const S_DELPASS>
-										</td>
-										<td>
-											<input type="password" name="password" size="8" /> <span class="pass-text"><const S_DELEXPL></span>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="2">
-											<input id="post-submit" type="submit" class="button" value="<const S_SUBMIT>" />
-										</td>
-									</tr>
-									<if SPAM_TRAP>
-										<tr style="display:none">
-											<td class="postblock">
-												<const S_SPAMTRAP>
-											</td>
-											<td>
-												<input type="text" name="name" size="10" autocomplete="off" />
-												<input type="text" name="link" size="10" autocomplete="off" />
-											</td>
-										</tr>
-									</if>
-								</tbody>
-							</table>
+							<fieldset>
+								<legend>Forum</legend>
+								<if !FORCED_ANON>
+									<label for="postform-name"><const S_NAME></label><input id="postform-name" type="text" name="field_a" placeholder="Name (will be Anonymous if empty)" />
+								</if>
+								<label for="post-form-link"><const S_EMAIL></label><input id="post-form-link" type="text" name="field_b" placeholder="anon@ymous.com" />
+								<label for="post-form-subject"><const S_SUBJECT></label><input id="post-form-subject" type="text" name="title" placeholder="Subject" />
+								<label for="post-form-comment"><const S_COMMENT></label><textarea id="post-form-comment" name="comment" rows="4" placeholder="Comment"></textarea>
+								<if ALLOW_IMAGE_THREADS>
+								<div id="post-form-upload">
+									<label for="post-form-file"><const S_UPLOADFILE></label><input id="post-form-file" type="file" name="file" />
+								</div>
+								</if>
+								<if ENABLE_CAPTCHA>
+									<label for="post-form-captcha"><const S_CAPTCHA></label><input id="post-form-captcha" type="text" name="captcha" size="10" /><img alt="" src="<var expand_filename('captcha.pl')>" />
+								</if>
+								<label for="post-form-password">Password</label><input id="post-form-password" type="password" name="password" placeholder="Password (for post deletion)" />
+								<input id="post-form-submit" class="button" type="submit" value="<const S_SUBMIT>" />
+								<!--<if SPAM_TRAP>
+									<label><const S_SPAMTRAP></label><input type="text" name="name" size="10" autocomplete="off" /><input type="text" name="link" size="10" autocomplete="off" />
+								</if>-->
+							</fieldset>
 						</div>
 					</div>
 					<div id="post-rules"><div class="card">}.include(INCLUDE_DIR."rules.html").q{</div></div>

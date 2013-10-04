@@ -109,10 +109,11 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
   .to-top { display: none; }
   .container { margin: 0 auto; max-width: 1280px; width: 90%; }
   .list table .m, .list table .s, .list table .t { display: table-cell; } }
-#post-form table td { padding: 0 0 1em; vertical-align: middle; }
-#post-form table .postblock { padding: 0 1em 0 0; vertical-align: top; }
-#post-form input[type=text], #post-form input[type=file], #post-form textarea { margin: 0; width: 100%; }
-#post-form #post-submit { float: right; }
+#post-form label { display: none; }
+#post-form input, #post-form textarea { display: block; margin: 0 0 1em; width: 100%; }
+#post-form textarea { border: 1px solid #979ea1; border-radius: 3px; font-size: .75em; padding: .5em; }
+#post-form #post-form-link { display: none; }
+#post-form #post-form-submit { float: right; }
 
 .post .post-head input[type=checkbox] { height: auto; }
 .post .post-head .post-subject, .post .post-head .post-user { font-weight: bold; }
