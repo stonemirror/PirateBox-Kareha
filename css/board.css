@@ -109,7 +109,8 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
   .to-top { display: none; }
   .container { margin: 0 auto; max-width: 1280px; width: 90%; }
   .list table .m, .list table .s, .list table .t { display: table-cell; } }
-#post-form input[type=text], #post-form textarea { width: 100%; }
+#post-form input[type=text], #post-form input[type=file], #post-form textarea { margin-bottom: 1em; width: 100%; }
+#post-form #post-submit { float: right; }
 
 .post .post-head input[type=checkbox] { height: auto; }
 .post .post-head .post-subject, .post .post-head .post-user { font-weight: bold; }
@@ -123,5 +124,5 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 .userdelete { float: right; line-height: 100%; }
 .userdelete input { margin: 0; vertical-align: middle; }
 
-@media screen and (min-width: 801px) { #post-form { float: left; width: 50%; }
+@media screen and (min-width: 801px) { #post-form { float: left; padding: 0 1em 0 0; width: 50%; }
   #post-rules { float: right; width: 50%; } }
