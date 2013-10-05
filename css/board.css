@@ -123,7 +123,7 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 .thread .post-head .post-user { color: #979ea1; }
 .thread .post-content { padding: 1em 0 0; }
 .thread .post-content .post-file { margin: 0 0 1em 0; }
-.thread .reply { background: #e7e9ea; border-radius: 3px; margin: 0 0 1em 0; padding: 1em; }
+.thread .reply { background: #e7e9ea; border-radius: 3px; margin: 0 0 1em 0; padding: 1em 1em 0; }
 .thread .reply .post-content { padding-bottom: 0; }
 .thread .reply:last-child { margin-bottom: 0; }
 

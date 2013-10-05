@@ -450,23 +450,24 @@ use constant REPLY_TEMPLATE => compile_template( q{
 					</if>
 				</if>
 				<span class="post-data"><var $date></var></span>
-				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span> 
+				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span> <br />
+				
+				<if $image>
+					<span class="post-file-size"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>-(<em><var $size> B, <var $width>x<var $height></em>)</span>
+				</if>
 			</div>
-			<if $image>
-				<br />
-				<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-				-(<em><var $size> B, <var $width>x<var $height></em>)</span>
-				<span class="thumbnailmsg"><const S_THUMB></span><br />
-
-				<if $thumbnail>
-					<a target="_blank" href="<var expand_filename(clean_path($image))>">
-					<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
-				</if>
-				<if !$thumbnail>
-					<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
-				</if>
-			</if>
 			<div class="post-content">
+				<if $image>
+					<div class="post-file">
+						<if $thumbnail>
+							<a target="_blank" href="<var expand_filename(clean_path($image))>">
+							<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+						</if>
+						<if !$thumbnail>
+							<div class="post-no-thumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
+						</if>
+					</div>
+				</if>
 				<blockquote>
 					<var $comment>
 				</blockquote>

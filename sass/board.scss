@@ -72,7 +72,7 @@
 	.reply {
 		background: $gray;
 		border-radius: $radius;
-		@include marpad(0 0 1em 0, 1em);
+		@include marpad(0 0 1em 0, 1em 1em 0);
 		.post-content {
 			padding-bottom: 0;
 		}
