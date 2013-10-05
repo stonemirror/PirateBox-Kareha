@@ -394,11 +394,7 @@ use constant REPLY_TEMPLATE => compile_template( q{
 				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
 				<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span> <br />
 				<if $image>
-					<span class="post-file-size"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-						-(<em><var $size> B, <var $width>x<var $height></em>)</span> 
-					<if $thumbnail>
-						<span class="post-thumb-msg"><const S_THUMB></span>
-					</if>
+					<span class="post-file-size"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>-(<em><var $size> B, <var $width>x<var $height></em>)</span>
 				</if>
 			</div>
 			<div class="post-content">
