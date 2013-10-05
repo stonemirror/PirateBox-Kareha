@@ -63,9 +63,9 @@
 	}
 
 	.post-content {
-		padding: 1em;
-		p {
-			@include marpad(0, 0);
+		padding: 1em 0 0;
+		.post-file {
+			margin: 0 0 1em 0;
 		}
 	}
 
@@ -98,9 +98,15 @@
 
 //----------------[ Desktop ]
 @media screen and (min-width: 801px) {
-.post {
+.thread {
 	.post-head {
 		font-size: 1em;
+	}
+	.post-content {
+		.post-file {
+			float: left;
+			margin: 0 1em 1em 0;
+		}
 	}
 }
 

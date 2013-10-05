@@ -121,8 +121,8 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 .thread .post-head input[type=checkbox] { height: auto; }
 .thread .post-head .post-subject, .thread .post-head .post-user { font-weight: bold; }
 .thread .post-head .post-user { color: #979ea1; }
-.thread .post-content { padding: 1em; }
-.thread .post-content p { margin: 0; padding: 0; }
+.thread .post-content { padding: 1em 0 0; }
+.thread .post-content .post-file { margin: 0 0 1em 0; }
 .thread .reply { background: #e7e9ea; border-radius: 3px; margin: 0 0 1em 0; padding: 1em; }
 .thread .reply .post-content { padding-bottom: 0; }
 .thread .reply:last-child { margin-bottom: 0; }
@@ -132,6 +132,7 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 .userdelete { float: right; line-height: 100%; }
 .userdelete input { margin: 0; vertical-align: middle; }
 
-@media screen and (min-width: 801px) { .post .post-head { font-size: 1em; }
+@media screen and (min-width: 801px) { .thread .post-head { font-size: 1em; }
+  .thread .post-content .post-file { float: left; margin: 0 1em 1em 0; }
   #post-form { float: left; padding: 0 1em 0 0; width: 50%; }
   #post-rules { float: right; width: 50%; } }

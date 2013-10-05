@@ -357,20 +357,6 @@ use constant THREAD_FOOT_TEMPLATE => compile_template(q{
 use constant REPLY_TEMPLATE => compile_template( q{
 
 	<if $num==1>
-		<if $image>
-			<span class="filesize"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
-			-(<em><var $size> B, <var $width>x<var $height></em>)</span>
-			<span class="thumbnailmsg"><const S_THUMB></span><br />
-
-			<if $thumbnail>
-				<a target="_blank" href="<var expand_filename(clean_path($image))>">
-				<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
-			</if>
-			<if !$thumbnail>
-				<div class="nothumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
-			</if>
-		</if>
-
 		<div class="post">
 			<a name="<var $num>"></a>
 			<div class="post-head">
@@ -406,9 +392,27 @@ use constant REPLY_TEMPLATE => compile_template( q{
 				</if>
 				<span class="post-data"><var $date></var></span>
 				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
-				<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
+				<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span> <br />
+				<if $image>
+					<span class="post-file-size"><const S_PICNAME><a target="_blank" href="<var expand_filename(clean_path($image))>"><var get_filename($image)></a>
+						-(<em><var $size> B, <var $width>x<var $height></em>)</span> 
+					<if $thumbnail>
+						<span class="post-thumb-msg"><const S_THUMB></span>
+					</if>
+				</if>
 			</div>
 			<div class="post-content">
+				<if $image>
+					<div class="post-file">
+						<if $thumbnail>
+							<a target="_blank" href="<var expand_filename(clean_path($image))>">
+							<img src="<var expand_filename($thumbnail)>" width="<var $tn_width>" height="<var $tn_height>" alt="<var $size>" class="thumb" /></a>
+						</if>
+						<if !$thumbnail>
+							<div class="post-no-thumb"><a target="_blank" href="<var expand_filename(clean_path($image))>"><const S_NOTHUMB></a></div>
+						</if>
+					</div>
+				</if>
 				<blockquote>
 					<var $comment>
 				</blockquote>
