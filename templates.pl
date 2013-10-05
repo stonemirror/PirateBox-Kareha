@@ -152,7 +152,7 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 		</if>
 		<form id="delform" action="<var $self>" method="post">
 			<loop $threads>
-				<div class="post card">
+				<div class="thread card">
 					<loop $posts>
 						<var $text>
 						<if $abbreviated>
@@ -371,51 +371,53 @@ use constant REPLY_TEMPLATE => compile_template( q{
 			</if>
 		</if>
 
-		<a name="<var $num>"></a>
-		<div class="post-head">
-			<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
-			<span class="post-subject"><var $title></span>
-			<if $link>
-				<span class="post-user"><a href="<var $link>"><var $name></a></span>
-				<if $trip>
-					<span class="postertrip">
-						<a href="<var $link>">
+		<div class="post">
+			<a name="<var $num>"></a>
+			<div class="post-head">
+				<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
+				<span class="post-subject"><var $title></span>
+				<if $link>
+					<span class="post-user"><a href="<var $link>"><var $name></a></span>
+					<if $trip>
+						<span class="postertrip">
+							<a href="<var $link>">
+								<if !$capped>
+									<var $trip>
+								</if>
+								<if $capped>
+									<var $capped>
+								</if>
+							</a>
+						</span>
+					</if>
+				</if>
+				<if !$link>
+					<span class="post-user"><var $name></span>
+					<if $trip>
+						<span class="postertrip">
 							<if !$capped>
 								<var $trip>
 							</if>
 							<if $capped>
 								<var $capped>
 							</if>
-						</a>
-					</span>
+						</span>
+					</if>
 				</if>
-			</if>
-			<if !$link>
-				<span class="post-user"><var $name></span>
-				<if $trip>
-					<span class="postertrip">
-						<if !$capped>
-							<var $trip>
-						</if>
-						<if $capped>
-							<var $capped>
-						</if>
-					</span>
-				</if>
-			</if>
-			<span class="post-data"><var $date></var></span>
-			<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
-			<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
-		</div>
-		<div class="post-content">
-			<blockquote>
-				<var $comment>
-			</blockquote>
+				<span class="post-data"><var $date></var></span>
+				<span class="post-number"><a href="javascript:w_insert('&gt;&gt;<var $num>','<var $self>/<var $thread>/')">No.<var $num></a></span>
+				<span class="post-reply">[<a href="<var $self>/<var $thread>/" id="reply<var $thread>"><const S_REPLY></a>]</span>
+			</div>
+			<div class="post-content">
+				<blockquote>
+					<var $comment>
+				</blockquote>
+			</div>
 		</div>
 	</if>
 	<if $num!=1>
-		<a name="<var $num>"></a>
 		<div class="reply" id="reply<var $num>">
+			<a name="<var $num>"></a>
 			<div class="post-head">
 				<input type="checkbox" name="delete" value="<var $thread>,<var $num>" />
 				<span class="post-subject"><var $title></span>

@@ -40,7 +40,7 @@
 	display: none;
 }
 
-.post {
+.thread {
 	.post-head {
 		font-size: .75em;
 		input[type=checkbox] {
@@ -63,13 +63,19 @@
 	}
 
 	.post-content {
-		padding: 0 0 0 1em;
+		padding: 1em;
+		p {
+			@include marpad(0, 0);
+		}
 	}
 
 	.reply {
 		background: $gray;
-	    margin: 0 0 1em 0;
-	    padding: 1em;
+		border-radius: $radius;
+		@include marpad(0 0 1em 0, 1em);
+		.post-content {
+			padding-bottom: 0;
+		}
 	}
 
 	.reply:last-child {

@@ -117,13 +117,15 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 
 #post-rules { display: none; }
 
-.post .post-head { font-size: .75em; }
-.post .post-head input[type=checkbox] { height: auto; }
-.post .post-head .post-subject, .post .post-head .post-user { font-weight: bold; }
-.post .post-head .post-user { color: #979ea1; }
-.post .post-content { padding: 0 0 0 1em; }
-.post .reply { background: #e7e9ea; margin: 0 0 1em 0; padding: 1em; }
-.post .reply:last-child { margin-bottom: 0; }
+.thread .post-head { font-size: .75em; }
+.thread .post-head input[type=checkbox] { height: auto; }
+.thread .post-head .post-subject, .thread .post-head .post-user { font-weight: bold; }
+.thread .post-head .post-user { color: #979ea1; }
+.thread .post-content { padding: 1em; }
+.thread .post-content p { margin: 0; padding: 0; }
+.thread .reply { background: #e7e9ea; border-radius: 3px; margin: 0 0 1em 0; padding: 1em; }
+.thread .reply .post-content { padding-bottom: 0; }
+.thread .reply:last-child { margin-bottom: 0; }
 
 .pages { float: left; }
 
