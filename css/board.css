@@ -31,13 +31,15 @@ a:hover { text-decoration: underline; }
 
 input, textarea { font-family: 'Open Sans', sans-serif; font-size: .75em; }
 
-label { color: white; font-size: .75em; }
+label { font-size: .75em; }
 
 footer { color: #e7e9ea; }
 
 .message date { font-size: .625em; color: #979ea1; }
 .message name { font-size: .75em; font-weight: 800; }
 .message data { font-size: .75em; }
+
+#shoutbox-options label { color: white; }
 
 .red { color: red; }
 
@@ -135,6 +137,8 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 @media screen and (min-width: 801px) { .thread .post-content .post-file { float: left; margin: 0 1em 1em 0; }
   .thread .post-content .post-file .thumb { width: 200px; }
   #post-form { float: left; padding: 0 1em 0 0; width: 50%; }
+  #post-form label { display: block; font-weight: 800; float: left; width: 20%; }
+  #post-form input, #post-form textarea { width: 80%; }
   #post-rules { display: block; float: right; width: 50%; }
   .userdelete { float: right; line-height: 100%; }
   .userdelete input { margin: 0; vertical-align: middle; } }

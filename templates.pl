@@ -114,40 +114,38 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 	<section id="content">
 		<div class="container">
 			<if ALLOW_TEXT_THREADS or ALLOW_IMAGE_THREADS>
-				<div id="post-area">
-					<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
+				<div id="post-area" class="card">
+					<div id="post-form">
+						<form id="postform" action="<var $self>" method="post" enctype="multipart/form-data">
 						<input type="hidden" name="task" value="post" />
 						<if FORCED_ANON>
 							<input type="hidden" name="field_a" />
 						</if>
-						<div id="post-form">
-							<div class="card">
-								<fieldset>
-									<legend>Forum</legend>
-									<if !FORCED_ANON>
-										<label for="postform-name"><const S_NAME></label><input id="postform-name" type="text" name="field_a" placeholder="Name (will be Anonymous if empty)" />
-									</if>
-									<label for="post-form-link"><const S_EMAIL></label><input id="post-form-link" type="text" name="field_b" placeholder="anon@ymous.com" />
-									<label for="post-form-subject"><const S_SUBJECT></label><input id="post-form-subject" type="text" name="title" placeholder="Subject" />
-									<label for="post-form-comment"><const S_COMMENT></label><textarea id="post-form-comment" name="comment" rows="4" placeholder="Comment"></textarea>
-									<if ALLOW_IMAGE_THREADS>
-									<div id="post-form-upload">
-										<label for="post-form-file"><const S_UPLOADFILE></label><input id="post-form-file" type="file" name="file" />
-									</div>
-									</if>
-									<if ENABLE_CAPTCHA>
-										<label for="post-form-captcha"><const S_CAPTCHA></label><input id="post-form-captcha" type="text" name="captcha" size="10" /><img alt="" src="<var expand_filename('captcha.pl')>" />
-									</if>
-									<label for="post-form-password">Password</label><input id="post-form-password" type="password" name="password" placeholder="Password (for post deletion)" />
-									<input id="post-form-submit" class="button" type="submit" value="<const S_SUBMIT>" />
-									<!--<if SPAM_TRAP>
-										<label><const S_SPAMTRAP></label><input type="text" name="name" size="10" autocomplete="off" /><input type="text" name="link" size="10" autocomplete="off" />
-									</if>-->
-								</fieldset>
-							</div>
-						</div>
-						<div id="post-rules"><div class="card">}.include(INCLUDE_DIR."rules.html").q{</div></div>
-					</form>
+							<fieldset>
+								<legend>Forum</legend>
+								<if !FORCED_ANON>
+									<label for="postform-name"><const S_NAME></label><input id="postform-name" type="text" name="field_a" placeholder="Name (will be Anonymous if empty)" />
+								</if>
+								<!--<label for="post-form-link"><const S_EMAIL></label><input id="post-form-link" type="text" name="field_b" placeholder="anon@ymous.com" />-->
+								<label for="post-form-subject"><const S_SUBJECT></label><input id="post-form-subject" type="text" name="title" placeholder="Subject" />
+								<label for="post-form-comment"><const S_COMMENT></label><textarea id="post-form-comment" name="comment" rows="4" placeholder="Comment"></textarea>
+								<if ALLOW_IMAGE_THREADS>
+								<div id="post-form-upload">
+									<label for="post-form-file"><const S_UPLOADFILE></label><input id="post-form-file" type="file" name="file" />
+								</div>
+								</if>
+								<if ENABLE_CAPTCHA>
+									<label for="post-form-captcha"><const S_CAPTCHA></label><input id="post-form-captcha" type="text" name="captcha" size="10" /><img alt="" src="<var expand_filename('captcha.pl')>" />
+								</if>
+								<label for="post-form-password">Password</label><input id="post-form-password" type="password" name="password" placeholder="Password (for post deletion)" />
+								<input id="post-form-submit" class="button" type="submit" value="<const S_SUBMIT>" />
+								<!--<if SPAM_TRAP>
+									<label><const S_SPAMTRAP></label><input type="text" name="name" size="10" autocomplete="off" /><input type="text" name="link" size="10" autocomplete="off" />
+								</if>-->
+							</fieldset>
+						</form>
+					</div>
+					<div id="post-rules">}.include(INCLUDE_DIR."rules.html").q{</div>
 				</div>
 				<script type="text/javascript">set_new_inputs("postform")</script>
 			</if>

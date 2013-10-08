@@ -14,7 +14,8 @@
 		display: none;
 	}
 
-	input, textarea {
+	input, 
+	textarea {
 		display: block;
 		margin: 0 0 1em;
 		width: 100%;
@@ -51,7 +52,8 @@
 			margin: 0;
 		}
 
-		.post-subject, .post-user {
+		.post-subject, 
+		.post-user {
 			font-weight: bold;
 		}
 
@@ -111,6 +113,17 @@
 	float: left;
 	padding: 0 1em 0 0;
 	width: 50%;
+	label {
+		display: block;
+		font-weight: 800;
+		float: left;
+		width: 20%;
+	}
+	
+	input, 
+	textarea {
+		width: 80%;
+	}
 }
 
 #post-rules {
