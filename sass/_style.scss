@@ -38,7 +38,11 @@ html {}
 				}
 			}
 
-		#content {}
+		#content {
+			.container {
+				padding: 1em .5em;
+			}
+		}
 			
 			#welcome {}
 				

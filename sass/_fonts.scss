@@ -1,25 +1,24 @@
-//
-//	Fonts
-//
-
 //----------------[ Mobile ]
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
 //-------- Base
 body {
 	color: $black;
-	font-family: sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
+	font-weight: 400;
 }
 
 h1 {
-	@include font(1em, bold, auto, 0);
+	@include font(1em, 800, auto, 0);
 }
 
 h2 {
-	@include font(1.3em, bold, auto, 0 0 .25em);
+	@include font(1.3em, 800, auto, 0 0 .25em);
 }
 
 h3 {
-	@include font(1em, bold, auto, 0 0 .25em);
+	@include font(1em, 800, auto, 0 0 .25em);
 }
 
 p {
@@ -44,7 +43,8 @@ a:hover {
 		@include font(1.5em, normal, 1.5em, 0);
 	}
 
-input {
+input, textarea {
+	font-family: 'Open Sans', sans-serif;
 	font-size: .75em;
 }
 
@@ -66,7 +66,7 @@ footer {
 
 	name {
 		font-size: .75em;
-		font-weight: bold;
+		font-weight: 800;
 	}
 
 	data {

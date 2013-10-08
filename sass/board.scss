@@ -41,10 +41,14 @@
 }
 
 .thread {
+	.post {}
+
 	.post-head {
 		font-size: .75em;
+		margin: 0 0 1em;
 		input[type=checkbox] {
 			height: auto;
+			margin: 0;
 		}
 
 		.post-subject, .post-user {
@@ -63,9 +67,11 @@
 	}
 
 	.post-content {
-		padding: 1em 0 0;
 		.post-file {
 			margin: 0 0 1em 0;
+			.thumb {
+				width: 100%;
+			}
 		}
 	}
 
@@ -87,25 +93,16 @@
 	float: left;
 }
 
-.userdelete {
-	float: right;
-	line-height: 100%;
-	input {
-		margin: 0;
-		vertical-align: middle;
-	}
-}
-
 //----------------[ Desktop ]
 @media screen and (min-width: 801px) {
 .thread {
-	.post-head {
-		font-size: 1em;
-	}
 	.post-content {
 		.post-file {
 			float: left;
 			margin: 0 1em 1em 0;
+			.thumb {
+				width: 200px;
+			}
 		}
 	}
 }
@@ -117,7 +114,17 @@
 }
 
 #post-rules {
+	display: block;
 	float: right;
 	width: 50%;
+}
+
+.userdelete {
+	float: right;
+	line-height: 100%;
+	input {
+		margin: 0;
+		vertical-align: middle;
+	}
 }
 }
