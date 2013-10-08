@@ -85,7 +85,7 @@ header img, footer img { vertical-align: bottom; }
 
 input { height: 3em; border: 1px solid #979ea1; border-radius: 3px; margin: 0 0 1em; padding: 0 0.5em; }
 
-input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
+input[type=checkbox], input[type=radio] { height: auto; margin: 0 .5em 0 0; }
 
 .button { background: #979ea1; border: 0; color: white; }
 
@@ -123,16 +123,20 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
 #post-rules { display: none; }
 
 .thread .post-head { font-size: .75em; margin: 0 0 1em; }
-.thread .post-head input[type=checkbox] { height: auto; margin: 0; }
-.thread .post-head .post-subject, .thread .post-head .post-user { font-weight: bold; }
-.thread .post-head .post-user { color: #979ea1; }
+.thread .post-head .post-info { margin: 0 0 1em; }
+.thread .post-head .post-info input[type=checkbox] { height: auto; margin: 0; }
+.thread .post-head .post-info .post-subject, .thread .post-head .post-info .post-user { font-weight: bold; }
+.thread .post-head .post-info .post-user { color: #979ea1; }
 .thread .post-content .post-file { margin: 0 0 1em 0; }
 .thread .post-content .post-file .thumb { width: 100%; }
 .thread .reply { background: #e7e9ea; border-radius: 3px; margin: 0 0 1em 0; padding: 1em 1em 0; }
 .thread .reply .post-content { padding-bottom: 0; }
 .thread .reply:last-child { margin-bottom: 0; }
 
-.pages { float: left; }
+.pages { margin: 0 0 1em; }
+
+.userdelete { line-height: 100%; }
+.userdelete input { height: auto; margin: 0; vertical-align: middle; }
 
 @media screen and (min-width: 801px) { .thread .post-content .post-file { float: left; margin: 0 1em 1em 0; }
   .thread .post-content .post-file .thumb { width: 200px; }
@@ -140,5 +144,5 @@ input[type=radio] { height: 1.3em; margin: 0 .5em 0 0; }
   #post-form label { display: block; font-weight: 800; float: left; width: 20%; }
   #post-form input, #post-form textarea { width: 80%; }
   #post-rules { display: block; float: right; width: 50%; }
-  .userdelete { float: right; line-height: 100%; }
-  .userdelete input { margin: 0; vertical-align: middle; } }
+  .pages { float: left; }
+  .userdelete { float: right; } }

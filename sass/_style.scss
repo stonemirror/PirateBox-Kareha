@@ -133,8 +133,9 @@ html {}
 			@include marpad(0 0 1em, 0 .5em);
 		}
 
+		input[type=checkbox],
 		input[type=radio] {
-		  	height: 1.3em;
+		  	height: auto;
 		  	margin: 0 .5em 0 0;
 		}
 

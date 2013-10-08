@@ -174,42 +174,44 @@ use constant MAIN_PAGE_TEMPLATE => compile_template(NORMAL_HEAD_INCLUDE.q{
 				</loop>
 
 				<div class="card">
-					<table class="pages" border="1">
-						<tbody>
-							<tr>
-								<td>
-									<if $prevpage>
-										<form method="get" action="<var $prevpage>">
-											<input value="<const S_PREV>" type="submit" />
-										</form>
-									</if>
-									<if !$prevpage>
-										<const S_FIRSTPG>
-									</if>
-								</td>
-								<td>
-									<loop $pages>
-										<if $page ne $current>
-											[<a href="<var $filename>"><var $page></a>]
+					<div class="pages">
+						<table>
+							<tbody>
+								<tr>
+									<td>
+										<if $prevpage>
+											<form method="get" action="<var $prevpage>">
+												<input value="<const S_PREV>" type="submit" />
+											</form>
 										</if>
-										<if $page eq $current>
-											[<var $page>]
+										<if !$prevpage>
+											<const S_FIRSTPG>
 										</if>
-									</loop>
-								</td>
-								<td>
-									<if $nextpage>
-										<form method="get" action="<var $nextpage>">
-											<input value="<const S_NEXT>" type="submit" />
-										</form>
-									</if>
-									<if !$nextpage>
-										<const S_LASTPG>
-									</if>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+									</td>
+									<td>
+										<loop $pages>
+											<if $page ne $current>
+												[<a href="<var $filename>"><var $page></a>]
+											</if>
+											<if $page eq $current>
+												[<var $page>]
+											</if>
+										</loop>
+									</td>
+									<td>
+										<if $nextpage>
+											<form method="get" action="<var $nextpage>">
+												<input value="<const S_NEXT>" type="submit" />
+											</form>
+										</if>
+										<if !$nextpage>
+											<const S_LASTPG>
+										</if>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 					<div class="userdelete">
 						<input type="hidden" name="task" value="delete" />
 						<const S_REPDEL>[<input type="checkbox" name="fileonly" value="on" /><const S_DELPICONLY>]

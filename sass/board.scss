@@ -44,38 +44,41 @@
 .thread {
 	.post {}
 
-	.post-head {
-		font-size: .75em;
-		margin: 0 0 1em;
-		input[type=checkbox] {
-			height: auto;
-			margin: 0;
+		.post-head {
+			font-size: .75em;
+			margin: 0 0 1em;
+			.post-info {
+				margin: 0 0 1em;
+				input[type=checkbox] {
+					height: auto;
+					margin: 0;
+				}
+
+				.post-subject, 
+				.post-user {
+					font-weight: bold;
+				}
+
+				.post-user {
+					color: $dark-gray;
+				}
+
+				.post-data {}
+
+				.post-number {}
+
+				.post-reply {}
+			}	
 		}
 
-		.post-subject, 
-		.post-user {
-			font-weight: bold;
-		}
-
-		.post-user {
-			color: $dark-gray;
-		}
-
-		.post-data {}
-
-		.post-number {}
-
-		.post-reply {}	
-	}
-
-	.post-content {
-		.post-file {
-			margin: 0 0 1em 0;
-			.thumb {
-				width: 100%;
+		.post-content {
+			.post-file {
+				margin: 0 0 1em 0;
+				.thumb {
+					width: 100%;
+				}
 			}
 		}
-	}
 
 	.reply {
 		background: $gray;
@@ -92,7 +95,16 @@
 }
 
 .pages {
-	float: left;
+	margin: 0 0 1em;
+}
+
+.userdelete {
+	line-height: 100%;
+	input {
+		height: auto;
+		margin: 0;
+		vertical-align: middle;
+	}
 }
 
 //----------------[ Desktop ]
@@ -119,7 +131,7 @@
 		float: left;
 		width: 20%;
 	}
-	
+
 	input, 
 	textarea {
 		width: 80%;
@@ -132,12 +144,11 @@
 	width: 50%;
 }
 
+.pages {
+	float: left;
+}
+
 .userdelete {
 	float: right;
-	line-height: 100%;
-	input {
-		margin: 0;
-		vertical-align: middle;
-	}
 }
 }
