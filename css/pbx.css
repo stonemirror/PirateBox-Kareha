@@ -1,0 +1,177 @@
+* {
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body, div, object, iframe, fieldset {
+  border: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+header, footer, footer, nav, section, article, hgroup, figure {
+  display: block;
+}
+
+legend {
+  display: none;
+}
+
+body {
+  color: #1b1d1e;
+  font-family: sans-serif;
+  font-size: 100%;
+}
+
+h1 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: auto;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: auto;
+  margin: 0 0 0.25em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: auto;
+  margin: 0 0 0.25em;
+}
+
+p {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: 1.5em;
+  margin: 0 0 1em;
+}
+
+a {
+  color: #ad000b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ad000b;
+  text-decoration: underline;
+}
+
+.current {
+  color: white;
+}
+
+#top-nav a {
+  display: block;
+  font-size: 1.5em;
+  font-weight: normal;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+footer {
+  color: #e7e9ea;
+}
+
+html, body {
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background: #1b1d1e;
+}
+
+header {
+  margin: 0 0 2em;
+}
+header ul {
+  margin: 0;
+  padding: 0;
+}
+header img, footer img {
+  vertical-align: bottom;
+}
+
+#logo {
+  float: left;
+  overflow: hidden;
+}
+
+#menu-icon {
+  float: right;
+  width: 36px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#top-nav {
+  clear: both;
+  display: none;
+  padding: 1em 0 0 0;
+}
+
+.container {
+  height: 100%;
+  padding: .5em;
+  width: 100%;
+}
+
+@media screen and (min-width: 801px) {
+  #logo {
+    margin: 0 2em 0 0;
+  }
+
+  #menu-icon {
+    display: none;
+  }
+
+  #top-nav {
+    clear: none;
+    display: table-cell;
+    padding: 0;
+    vertical-align: middle;
+  }
+  #top-nav ul li {
+    float: left;
+  }
+  #top-nav ul li a {
+    margin: 0 1em 0 0;
+    padding: 0;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 1em;
+    width: 90%;
+  }
+}
+
+.postblock, .reply {
+  background: #e7e9ea;
+  color: #1b1d1e;
+}

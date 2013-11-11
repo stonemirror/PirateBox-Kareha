@@ -86,7 +86,6 @@ use constant NORMAL_HEAD_INCLUDE => q{
 <link rel="shortcut icon" href="<const expand_filename(FAVICON)>" />
 
 <style type="text/css">
-body { margin: 0; padding: 12px; margin-bottom: auto; }
 blockquote blockquote { margin-left: 0em }
 form { margin-bottom: 0px }
 .postarea { text-align: center }
@@ -103,6 +102,9 @@ form { margin-bottom: 0px }
 <loop $stylesheets>
 <link rel="<if !$default>alternate </if>stylesheet" type="text/css" href="<var expand_filename($filename)>" title="<var $title>" />
 </loop>
+<link rel="stylesheet" type="text/css" href="<const expand_filename(DEFAULT_STYLE)>" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
 
 <script type="text/javascript">var style_cookie="<const STYLE_COOKIE>";</script>
 <script type="text/javascript" src="<const expand_filename(JS_FILE)>"></script>
@@ -113,20 +115,27 @@ form { margin-bottom: 0px }
 
 }.include(INCLUDE_DIR."header.html").q{
 
-<div class="adminbar">
-<loop $stylesheets>
-	[<a href="javascript:set_stylesheet('<var $title>')"><var $title></a>]
-</loop>
--
-[<a href="<var expand_filename("..")>" target="_top"><const S_HOME></a>]
-</div>
-
-<div class="logo">
-<if SHOWTITLEIMG==1><img src="<var expand_filename(TITLEIMG)>" alt="<const TITLE>" /></if>
-<if SHOWTITLEIMG==2><img src="<var expand_filename(TITLEIMG)>" onclick="this.src=this.src;" alt="<const TITLE>" /></if>
-<if SHOWTITLEIMG and SHOWTITLETXT><br /></if>
-<if SHOWTITLETXT><const TITLE></if>
-</div><hr />
+<header id="header">
+	<div class="container">
+		<div id="logo">
+			<h1>
+				<a href="/">
+					<img src="/piratebox-logo-horizontal-white.png" alt="PirateBox" title="PirateBox - Share Freely" />
+				</a>
+			</h1>
+		</div>
+		<div id="menu-icon"><img src="menu.png" alt="Menu" /></div>
+		<nav id="top-nav">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="#" class="current">Forum</a></li>
+				<li><a href="/Shared/">Files</a></li>
+				<li><a href="#about">About</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<div class="container">
 };
 
 use constant NORMAL_FOOT_INCLUDE => include(INCLUDE_DIR."footer.html").q{
