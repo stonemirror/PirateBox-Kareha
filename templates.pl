@@ -102,7 +102,7 @@ form { margin-bottom: 0px }
 <loop $stylesheets>
 <link rel="<if !$default>alternate </if>stylesheet" type="text/css" href="<var expand_filename($filename)>" title="<var $title>" />
 </loop>
-<link rel="stylesheet" type="text/css" href="css/pbx.css" />
+<link rel="stylesheet" type="text/css" href="<const expand_filename(DEFAULT_STYLE)>" />
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="scripts.js"></script>
 
@@ -120,11 +120,11 @@ form { margin-bottom: 0px }
 		<div id="logo">
 			<h1>
 				<a href="/">
-					<img src="piratebox-logo-horizontal-white.png" alt="PirateBox" title="PirateBox - Share Freely">
+					<img src="/piratebox-logo-horizontal-white.png" alt="PirateBox" title="PirateBox - Share Freely" />
 				</a>
 			</h1>
 		</div>
-		<div id="menu-icon"><img src="menu.png" alt="Menu"></div>
+		<div id="menu-icon"><img src="menu.png" alt="Menu" /></div>
 		<nav id="top-nav">
 			<ul>
 				<li><a href="/">Home</a></li>

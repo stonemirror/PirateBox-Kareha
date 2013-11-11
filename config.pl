@@ -19,7 +19,7 @@ use constant TITLEIMG => '/piratebox-logo-small.png';			# Title image (point to 
 #use constant THREADS_LISTED => 40;				# Number of threads in the thread list
 #use constant REPLIES_PER_THREAD => 10;			# Replies shown
 #use constant S_ANONAME => 'Anonymous';			# Defines what to print if there is no text entered in the name field
-#use constant DEFAULT_STYLE => 'Futaba';		# Default CSS style title
+use constant DEFAULT_STYLE => 'css/pbx.css';		# Default CSS style title
 use constant FAVICON => '/favicon.ico';			# Path to the favicon for the board
 
 # Limitations
