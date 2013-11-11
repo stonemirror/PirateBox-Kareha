@@ -77,15 +77,6 @@ a:hover {
   margin: 0;
 }
 
-input {
-  font-size: .75em;
-}
-
-label {
-  color: white;
-  font-size: .75em;
-}
-
 footer {
   color: #e7e9ea;
 }
@@ -114,6 +105,39 @@ header img, footer img {
 #logo {
   float: left;
   overflow: hidden;
+}
+
+#menu-icon {
+  float: right;
+  width: 36px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#top-nav {
+  clear: both;
+  display: none;
+  padding: 1em 0 0 0;
+}
+
+.container {
+  height: 100%;
+  padding: .5em;
+  width: 100%;
 }
 
 @media screen and (min-width: 801px) {

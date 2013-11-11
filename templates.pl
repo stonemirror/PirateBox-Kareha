@@ -103,6 +103,8 @@ form { margin-bottom: 0px }
 <link rel="<if !$default>alternate </if>stylesheet" type="text/css" href="<var expand_filename($filename)>" title="<var $title>" />
 </loop>
 <link rel="stylesheet" type="text/css" href="css/pbx.css" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
 
 <script type="text/javascript">var style_cookie="<const STYLE_COOKIE>";</script>
 <script type="text/javascript" src="<const expand_filename(JS_FILE)>"></script>
@@ -133,6 +135,7 @@ form { margin-bottom: 0px }
 		</nav>
 	</div>
 </header>
+<div class="container">
 };
 
 use constant NORMAL_FOOT_INCLUDE => include(INCLUDE_DIR."footer.html").q{
